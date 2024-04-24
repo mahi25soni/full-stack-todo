@@ -1,4 +1,5 @@
 import React, { useState , useEffect} from 'react'
+import Alert from './Alert'
 
 export default function AddToDo() {
     console.log("add to do")
@@ -6,9 +7,7 @@ export default function AddToDo() {
     const [desc, setDesc] = useState("")
 
     const sendTaskData = async (e) => {
-        e.preventDefault()
         if (title && desc) {
-            console.log("Sending task data:", { title, desc });
 
             const response = await fetch("http://localhost:3000/api/task/create/", {
                 method: "POST",
@@ -22,7 +21,7 @@ export default function AddToDo() {
             });
 
             const final = await response.json();
-            console.log("Response:", final);
+            console.log(final)
         }
     };
 

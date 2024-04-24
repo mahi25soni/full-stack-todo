@@ -46,11 +46,6 @@ const markComplete = async (req, res) => {
             data : all_tasks
         })
 
-    
-        res.status(200).json({
-            message : "Task completed!",
-            data : updated_task
-        })
     }
     catch(err) {
         console.log(err.message)

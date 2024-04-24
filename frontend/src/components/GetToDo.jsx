@@ -24,16 +24,20 @@ export default function GetToDo() {
     return (
         <> 
         {todo.map((value) => {
-            return <ListingTask key = {value._id} task = {value}></ListingTask>
+            return <ListingTask key = {value._id} task = {value} setTodo = {setTodo}></ListingTask>
         })}
         </>
     )
 }
 
-function ListingTask({task}) {
+function ListingTask({task, setTodo}) {
 
-    function markShitDone (task_id) {
-
+    async function markShitDone (task_id) {
+        const response = await fetch(`http://localhost:3000/api/task/done/${task_id}`,{
+            method : 'PUT'
+        })
+        const final = await response.json();
+        setTodo(final.data)
     }
     return (
     <div>
