@@ -4,11 +4,9 @@ export default function GetToDo() {
     
     const [todo , setTodo] = useState([])
 
-    console.log("get to do ke andar")
 
     useEffect(() => {
 
-        console.log("use effect ke andar")
 
         fetch("http://localhost:3000/api/task/")
         .then((response) => {
@@ -23,7 +21,6 @@ export default function GetToDo() {
 
     }, [])
     
-    console.log(todo)
     return (
         <> 
         {todo.map((value) => {
