@@ -4,7 +4,12 @@ export default function GetToDo() {
     
     const [todo , setTodo] = useState([])
 
+    console.log("get to do ke andar")
+
     useEffect(() => {
+
+        console.log("use effect ke andar")
+
         fetch("http://localhost:3000/api/task/")
         .then((response) => {
             response.json()
@@ -15,26 +20,31 @@ export default function GetToDo() {
         .catch(err => {
             console.log("The error is " , err)
         })
-    })
 
+    }, [])
+    
+    console.log(todo)
     return (
         <> 
-        {todo.map(value => {
-
+        {todo.map((value) => {
+            return <ListingTask key = {value._id} task = {value}></ListingTask>
         })}
-
         </>
     )
 }
 
-function ListingTask(props) {
-    
+function ListingTask({task}) {
+
+    function markShitDone (task_id) {
+
+    }
     return (
     <div>
-        <p>{value.title}</p>
-        <p>{value.description}</p>
+        <p>{task.title}</p>
+        <p>{task.description}</p>
         <label htmlFor="markdone">Mark</label>
-        <input type="radio" name="markdone" id="" onChange={} />    
+        <input type="radio" name="markdone" id="" onChange={() => markShitDone(task._id)} />  
+        <hr />  
     </div>
     )
 

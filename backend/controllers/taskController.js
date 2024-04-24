@@ -39,6 +39,13 @@ const markComplete = async (req, res) => {
     try{
         const task_id = req.params._id
         const updated_task = await Task.findByIdAndUpdate({_id : task_id}, {done : true}, {new : true})
+        const all_tasks = await Task.find({done : false})
+    
+        res.status(200).json({
+            message : "All of your tasks!",
+            data : all_tasks
+        })
+
     
         res.status(200).json({
             message : "Task completed!",
