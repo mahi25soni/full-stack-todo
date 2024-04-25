@@ -2,7 +2,6 @@ import React, { useState , useEffect} from 'react'
 import Alert from './Alert'
 
 export default function AddToDo() {
-    console.log("add to do")
     const [title, setTitle] = useState("")
     const [desc, setDesc] = useState("")
 
@@ -23,6 +22,7 @@ export default function AddToDo() {
             const final = await response.json();
             console.log(final)
         }
+
     };
 
 
@@ -35,7 +35,6 @@ export default function AddToDo() {
         }
     }
 
-    console.log("return se just pehle")
 
   return (
     <>

@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react'
 export default function GetToDo() {
     
     const [todo , setTodo] = useState([])
-
+    console.log("insdie the get to do function")
 
     useEffect(() => {
 
+        console.log("insdie the use effect")
 
         fetch("http://localhost:3000/api/task/")
         .then((response) => {
@@ -21,11 +22,14 @@ export default function GetToDo() {
 
     }, [])
     
+    console.log("above return")
     return (
         <> 
-        {todo.map((value) => {
-            return <ListingTask key = {value._id} task = {value} setTodo = {setTodo}></ListingTask>
+
+        {todo.map(function (value) {
+            return <ListingTask key = {value._id} task={value} setTodo={setTodo}></ListingTask>
         })}
+
         </>
     )
 }
